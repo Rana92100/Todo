@@ -11,6 +11,10 @@
     align-items: center;
     padding-top: 50px;
     background-color: aqua;
+    padding: 20px;
+}
+.start{
+    display: flex;
 }
 .Input{
     border: 3px solid rgb(11, 242, 123);
@@ -32,14 +36,17 @@
 }
 .basic ul{
     margin-top: 30px;
-    width: 300px;
+    min-width: 300px;
     list-style-type: decimal;
+
 }
 .basic ul li{
     width: 100%;
     font-size: 25px;
     color: rgb(12, 121, 131);
     margin: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
 }
 .basic ul li p{
     display: inline;
@@ -57,9 +64,12 @@
 }
 @media(max-width:410px){
     .basic ul{
-        width: 200px;
+        min-width: 200px;
     }
     .Input{
         width: 200px;
+    }
+    .basic ul li button{
+        width: 60px;
     }
 }
