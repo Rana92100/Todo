@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="basic">
+        <div>
+            <input type="text" placeholder="Enter information about you" class="Input" />
+            <button class="add" onclick="Add()">Add Value</button>
+        </div>
+        <ul class="List">
+        </ul>
+
+    </div>
+
+
+    <script>
+        const Button = document.querySelector(".add");
+        let id = 1;
+        let isEdit=false;
+        let idItem=null;
+        function Delete(id){
+            const del=document.querySelector(`[data-id='${id}']`);
+            del.remove();
+        }
+        function Update(id){
+            const edit=document.querySelector(`[data-id='${id}'] p`);
+            const content=edit.innerHTML;
+            const inputValue = document.querySelector(".Input");
+            inputValue.value=content;
+            const Btn=document.querySelector(".add");
+            Btn.innerHTML="Click";
+            isEdit=true;
+            idItem=id;
+        }
+        function Add() {
+            if(isEdit){
+                const edit=document.querySelector(`[data-id='${idItem}'] p`);
+                const inputValue = document.querySelector(".Input");
+                edit.innerHTML=inputValue.value;
+                inputValue.value="";
+                isEdit=false;
+                const Btn=document.querySelector(".add");
+                Btn.innerHTML="Add Value";
+            }else { 
+                const inputValue = document.querySelector(".Input");
+                if (inputValue.value.length > 0) {
+                const New = document.createElement("li");
+                New.dataset.id=id;
+                New.innerHTML =
+                `
+                    <p>${inputValue.value}</p>
+                    <button onclick="Delete(${id})">Delete</button>
+                    <button onclick="Update(${id})">Update</button>
+                `;
+                const ulElement = document.querySelector(".List");
+                ulElement.append(New);
+                inputValue.value = "";
+                id++;
+            }
+            }
+
+        }
+    </script>
+</body>
+
+</html>
