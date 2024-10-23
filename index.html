@@ -50,7 +50,7 @@
                 Btn.innerHTML="Add Value";
             }else { 
                 const inputValue = document.querySelector(".Input");
-                if (inputValue.value.length > 0) {
+                if (inputValue.value.length > 0 && inputValue.value.trim().length>0) {
                 const New = document.createElement("li");
                 New.dataset.id=id;
                 New.innerHTML =
@@ -65,7 +65,6 @@
                 id++;
             }
             }
-
         }
     </script>
 </body>
